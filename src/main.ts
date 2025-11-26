@@ -1,4 +1,4 @@
-import { enforceDarkTheme } from './enforceDarkTheme';
+import { darkLightToggle, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
 
 (function() {
@@ -8,12 +8,12 @@ import { removeUpsellPanels } from './removeUpsellPanels';
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             // This prevents Reedsy from overwriting your change when you navigate chapters
-            if (mutation.attributeName === "class") enforceDarkTheme();
+            if (mutation.attributeName === "class") enforceThemePreference();
         });
     });
 
     // Run immediately on load
-    enforceDarkTheme();
+    darkLightToggle();
 
     // Wait before trying to remove panels, because the app can take a moment to fully load
     setTimeout(removeUpsellPanels, 5000);
