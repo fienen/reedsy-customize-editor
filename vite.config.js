@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-// Helper to extract the comment block from main.ts
 const banner = `// ==UserScript==
-// @name         Reedsy Dark Mode
+// @name         Reedsy Editor Customizations
 // @namespace    http://github.com/fienen
 // @version      1.0.251125
 // @description  Trick Reedsy into giving me dark mode
@@ -18,10 +17,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
-      name: 'ReedsyCustomizeEditor',
-      // Force the specific filename we want
-      fileName: () => 'reedsy-customize-editor.user.js',
-      // IIFE is the standard format for UserScripts (prevents global variable leaks)
+      name: 'ReedsyEditorCustomizations',
+      fileName: () => 'reedsy-editor-customizations.user.js',
       formats: ['iife'],
     },
     minify: 'terser',
