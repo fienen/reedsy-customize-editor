@@ -1,21 +1,7 @@
-/*!
-// ==UserScript==
-// @name         Reedsy Dark Mode
-// @namespace    http://github.com/fienen
-// @version      1.0.251125
-// @description  Trick Reedsy into giving me dark mode
-// @author       Michael Fienen <fienen@gmail.com>
-// @match        https://editor.reedsy.com/book/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=reedsy.com
-// @grant        none
-// @run-at       document-idle
-// ==/UserScript==
-*/
-
 (function() {
     'use strict';
 
-    console.log('TEST1');
+    console.log('TEST4');
     
     const enforceDarkTheme = () => {
         const html = document.documentElement;
