@@ -13,6 +13,8 @@
 (function() {
     'use strict';
 
+    console.log('TEST');
+    
     const enforceDarkTheme = () => {
         const html = document.documentElement;
 
