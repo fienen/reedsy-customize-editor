@@ -9,7 +9,8 @@ const banner = `// ==UserScript==
 // @author       Michael Fienen <fienen@gmail.com>
 // @match        https://editor.reedsy.com/book/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reedsy.com
-// @grant        none
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @run-at       document-idle
 // ==/UserScript==`;
 
