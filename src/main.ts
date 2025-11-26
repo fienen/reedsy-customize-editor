@@ -1,7 +1,5 @@
 (function() {
     'use strict';
-
-    console.log('TEST4');
     
     const enforceDarkTheme = () => {
         const html = document.documentElement;
