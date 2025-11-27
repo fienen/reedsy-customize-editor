@@ -20,6 +20,7 @@ export const darkLightToggle = () => {
         const html = document.documentElement;
         const newBtnWrapper = defaultBtnWrapper.cloneNode(true);
 
+        // Create our own click handler for our new element that will replace the default behavior
         newBtnWrapper.addEventListener('click', function () {
             html.classList.toggle('light-theme');
             html.classList.toggle('dark-theme');
@@ -42,7 +43,6 @@ export const darkLightToggle = () => {
             console.log('[Reedsy Editor Customizations] Editor not ready, retrying in 5 seconds. (Attempt ' + themeButtonReloads + ' of 10)');
             setTimeout(darkLightToggle, 5000);
         }
-        
     }
 };
 
