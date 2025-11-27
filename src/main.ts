@@ -1,5 +1,6 @@
 import { initThemeButton, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
+import { getTopTenWordsWithCounts } from './frequentWords';
 
 (function() {
     'use strict';
@@ -18,4 +19,5 @@ import { removeUpsellPanels } from './removeUpsellPanels';
     // Wait before trying to initialize to give the editor time to load
     setTimeout(initThemeButton, 5000);
     setTimeout(removeUpsellPanels, 5000);
+    setTimeout(getTopTenWordsWithCounts, 5000);
 })();
