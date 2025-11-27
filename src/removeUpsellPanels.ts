@@ -39,7 +39,7 @@ export const removeUpsellPanels = () => {
             return;
         } else {
             console.log('[Reedsy Editor Customizations] Upsell ads not detected, retrying in 5 seconds. (Attempt ' + removeUpsellReloads + ' of 10)');
-            setTimeout(removeUpsellPanels, 5000);
+            setTimeout(removeUpsellPanels, 2500);
         }
     }
 };
