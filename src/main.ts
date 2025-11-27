@@ -12,10 +12,10 @@ import { removeUpsellPanels } from './removeUpsellPanels';
         });
     });
 
+    // Start observing the <html> element
+    observer.observe(document.documentElement, { attributes: true });
+
     // Wait before trying to initialize to give the editor time to load
     setTimeout(initThemeButton, 5000);
     setTimeout(removeUpsellPanels, 5000);
-
-    // Start observing the <html> element
-    observer.observe(document.documentElement, { attributes: true });
 })();
