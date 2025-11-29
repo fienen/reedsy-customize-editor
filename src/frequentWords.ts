@@ -1,5 +1,3 @@
-export 
-
 /**
  * Extracts text from an HTML element and returns the top 10 most frequent words
  * with their occurrence counts.
@@ -22,7 +20,7 @@ export const getTopTenWordsWithCounts = () => {
         .filter(word => word.length > 0 && !stopWordList.has(word));
 
     // 3. Counting
-    const frequencyMap = {};
+    const frequencyMap: Record<string, number> = {};
     words.forEach(word => {
         frequencyMap[word] = (frequencyMap[word] || 0) + 1;
     });
@@ -34,5 +32,5 @@ export const getTopTenWordsWithCounts = () => {
         .sort((a, b) => b.count - a.count); // Sort descending by count
 
     // 5. Slicing
-    return result.slice(0, 10);
+    console.log(`Top Ten Words: ${JSON.stringify((result.slice(0, 10)))}`);
 }
