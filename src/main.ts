@@ -4,7 +4,7 @@ import styles from './src/styles.css?inline';
 (function() {
     'use strict';
 
-    addStyles(styles);
+    GM_addStyle(styles);
 
     // Wait before trying to initialize to give the editor time to load
     setTimeout(initEditorCustomizations, 5000);

@@ -11,6 +11,7 @@ const banner = `// ==UserScript==
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reedsy.com
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @grant        GM_addStyle
 // @run-at       document-idle
 // ==/UserScript==`;
 
