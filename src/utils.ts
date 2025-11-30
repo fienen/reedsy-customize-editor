@@ -1,9 +1,9 @@
 import { initThemeButton, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
-import { renderWordFrequencyChart } from './frequentWords';
 import { initMostUsedWords } from './frequentWords';
 
 let initReloads = 0;
+export let chapterEditor = document.getElementById('chapter-editor');
 
 /**
  * Returns a function that, as long as it continues to be invoked, will not
@@ -50,8 +50,6 @@ export function debounce<T extends any[]>(func: (...args: T) => void, delay: num
  * ```
  */
 export function initEditorCustomizations() {
-    const chapterEditor = document.getElementById('chapter-editor');
-
     if (!chapterEditor) {
         // Increment counter
         initReloads++;
@@ -62,6 +60,7 @@ export function initEditorCustomizations() {
             return;
         } else {
             console.log('[Reedsy Editor Customizations] Editor not ready, retrying in 4 seconds. (Attempt ' + initReloads + ' of 10)');
+            chapterEditor = document.getElementById('chapter-editor');
             setTimeout(initEditorCustomizations, 4000);
         }
     } else {
@@ -75,14 +74,6 @@ export function initEditorCustomizations() {
 
         // Start observing the <html> element
         observer.observe(document.documentElement, { attributes: true });
-
-        // Create the debounced version of the handler (5000ms = 5 seconds)
-        const handleKeyUp = debounce(() => {
-            renderWordFrequencyChart();
-        }, 5000);
-
-        // Attach it to the event
-        chapterEditor.addEventListener('keyup', handleKeyUp);
 
         enforceThemePreference();
         initThemeButton();

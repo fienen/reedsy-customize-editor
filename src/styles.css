@@ -1,12 +1,34 @@
 #rce-word-count-inner {
+    display: table;
     height: 100%;
     margin: .5rem 0;
+    table-layout: auto;
+}
+#rce-word-count-inner .stat {
+    display: table-row;
+}
+#rce-word-count-inner .stat > div {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2px 5px;
 }
 .rce-panel-closed + #rce-word-count-inner {
     height: 0;
     margin: 0 0;
     overflow: hidden;
 }
-:not(.rce-panel-closed) + .vui-icon {
+#rce-word-count-button:not(.rce-panel-closed) ~ .vui-icon {
     transform: rotate(180deg);
+}
+.rce-word, 
+.rce-word-count {
+    width: 1%; 
+    white-space: nowrap;
+}
+.rce-word-bar {
+    width: auto;
+}
+.rce-word-bar-fill {
+    color: var(--local-color-default);
+    height: var(--fbc-font-size);
 }

@@ -54,8 +54,6 @@ export const removeUpsellPanels = () => {
             let wordStatWrapper       = document.createElement('div');
             wordStatWrapper.className = 'word-count';
             wordStatWrapper.id        = 'rce-word-count-inner';
-            // TEMP: For layout testing
-            wordStatWrapper.innerHTML = 'This is where the word table will render.';
             mostUsedWordsPanel.appendChild(wordStatWrapper);
             statPanelsToRemove[0].replaceWith(mostUsedWordsPanel);
 

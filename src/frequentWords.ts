@@ -1,3 +1,5 @@
+import { chapterEditor, debounce } from "./utils";
+
 /**
  * Extracts text from an HTML element and returns the top 10 most frequent words
  * with their occurrence counts.
@@ -35,47 +37,54 @@ export const getTopTenWordsWithCounts = () => {
     return result.slice(0, 10);
 }
 
-export function renderWordFrequencyChart() {
-    const wrapper = document.getElementById('rce-most-used-words');
+export function updateWordFrequencyChart() {
+    const wrapper = document.getElementById('rce-word-count-inner');
     if (!wrapper) return;
-    wrapper.innerText = 'Rendering chart...';
-    console.log('[Reedsy Editor Customizations] renderWordFrequencyChart() fired.');
-    /*
-    const data = getTopTenWordsWithCounts(sourceEl);
 
-    if (!targetElement) return;
-    targetElement.innerHTML = '';
-    targetElement.classList.add('frequency-chart-container');
-
-    if (!data || data.length === 0) {
-        targetElement.innerHTML = '<p>No data found.</p>';
+    const frequentWords = getTopTenWordsWithCounts();
+    if (!frequentWords || frequentWords.length === 0) {
+        wrapper.innerHTML = '<p>No data found.</p>';
         return;
     }
 
-    const maxCount = data[0].count;
+    // Clear existing content
+    wrapper.querySelectorAll('.stat')?.forEach(node => node.remove());
 
-    data.forEach(item => {
+    const maxCount = frequentWords[0].count;
+
+    frequentWords.forEach(item => {
         const percentage = maxCount > 0 ? (item.count / maxCount) * 100 : 0;
 
         // Using template literals for cleaner DOM generation (Alternative approach to createElement)
-        const rowHTML = `
-            <div class="chart-row">
-                <span class="row-word" title="${item.word}">${item.word}</span>
-                <div class="row-bar-container">
-                        <div class="bar-fill" style="width: ${percentage}%; ${percentage === 100 ? 'background-color:#2980b9' : ''}"></div>
+        const word = `
+            <div class="stat" data-v-a2feb5b3>
+                <div class="rce-word" title="${item.word}">${item.word}</div>
+                <div class="rce-word-bar">
+                    <div class="rce-word-bar-fill" style="width: ${percentage}%; ${percentage === 100 ? 'background-color:var(--local-color-emphasis)' : ''}"></div>
                 </div>
-                <span class="row-count">${item.count}</span>
+                <div class="rce-word-count">${item.count}</div>
             </div>
         `;
-        targetElement.insertAdjacentHTML('beforeend', rowHTML);
+        wrapper.insertAdjacentHTML('beforeend', word);
     });
-    */
+
+    console.log('[Reedsy Editor Customizations] Most used words counts updated.');
 }
 
 export function initMostUsedWords() {
+    // Set up the toggle button behavior for the "Most used words" panel
     let mostUsedWordButton = document.getElementById('rce-word-count-button');
     mostUsedWordButton?.addEventListener('click', function () {
         this.classList.toggle('rce-panel-closed');
     });
+
+    // Create the debounced version of the handler (5000ms = 5 seconds)
+    const handleKeyUp = debounce(() => {
+        updateWordFrequencyChart();
+    }, 5000);
+
+    // Attach it to the event
+    chapterEditor?.addEventListener('keyup', handleKeyUp);
+    updateWordFrequencyChart();
     console.log('[Reedsy Editor Customizations] "Most used words" panel initialized.');
 }
