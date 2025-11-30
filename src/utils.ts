@@ -2,8 +2,8 @@ import { initThemeButton, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
 import { initMostUsedWords } from './frequentWords';
 
-let initReloads = 0;
 export let chapterEditor = document.getElementById('chapter-editor');
+let initReloads          = 0;
 
 /**
  * Returns a function that, as long as it continues to be invoked, will not
@@ -60,6 +60,8 @@ export function initEditorCustomizations() {
             return;
         } else {
             console.log('[Reedsy Editor Customizations] Editor not ready, retrying in 4 seconds. (Attempt ' + initReloads + ' of 10)');
+            
+            // Try getting the editor again before next attempt
             chapterEditor = document.getElementById('chapter-editor');
             setTimeout(initEditorCustomizations, 4000);
         }
@@ -72,9 +74,10 @@ export function initEditorCustomizations() {
             });
         });
 
-        // Start observing the <html> element
+        // Start observing
         observer.observe(document.documentElement, { attributes: true });
 
+        // Run feature initializations
         enforceThemePreference();
         initThemeButton();
         removeUpsellPanels();

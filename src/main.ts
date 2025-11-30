@@ -7,5 +7,5 @@ import styles from './styles.css?inline';
     GM_addStyle(styles);
 
     // Wait before trying to initialize to give the editor time to load
-    setTimeout(initEditorCustomizations, 5000);
+    setTimeout(initEditorCustomizations, 3000);
 })();
