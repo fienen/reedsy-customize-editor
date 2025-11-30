@@ -1,6 +1,7 @@
 import { initThemeButton, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
 import { renderWordFrequencyChart } from './frequentWords';
+import { initMostUsedWords } from './frequentWords';
 
 let initReloads = 0;
 
@@ -86,5 +87,6 @@ export function initEditorCustomizations() {
         enforceThemePreference();
         initThemeButton();
         removeUpsellPanels();
+        initMostUsedWords();
     }
 }

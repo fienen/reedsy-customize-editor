@@ -3,4 +3,8 @@
 }
 .rce-panel-closed + #rce-word-count-inner {
     height: 0;
+    overflow: hidden;
+}
+:not(.rce-panel-closed) + .vui-icon {
+    transform: rotate(180deg);
 }

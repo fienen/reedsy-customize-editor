@@ -1,5 +1,5 @@
 import { initEditorCustomizations } from './utils';
-import styles from './src/styles.css?inline';
+import styles from './styles.css?inline';
 
 (function() {
     'use strict';

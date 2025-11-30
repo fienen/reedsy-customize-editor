@@ -1,9 +1,3 @@
-/* TODO:
-    1: Write a debouncer for the text analyzer to reduce load on keyup
-    2: Write a keyup listener to run the counter after debounce
-    3: Figure out how to render the CSS
-*/
-
 /**
  * Extracts text from an HTML element and returns the top 10 most frequent words
  * with their occurrence counts.
@@ -76,4 +70,12 @@ export function renderWordFrequencyChart() {
         targetElement.insertAdjacentHTML('beforeend', rowHTML);
     });
     */
+}
+
+export function initMostUsedWords() {
+    let mostUsedWordButton = document.getElementById('rce-word-count-button');
+    mostUsedWordButton?.addEventListener('click', function () {
+        this.classList.toggle('rce-panel-closed');
+    });
+    console.log('[Reedsy Editor Customizations] "Most used words" panel initialized.');
 }
