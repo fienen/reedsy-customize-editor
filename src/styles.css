@@ -1,8 +1,10 @@
 #rce-word-count-inner {
     height: 100%;
+    margin: .5rem 0;
 }
 .rce-panel-closed + #rce-word-count-inner {
     height: 0;
+    margin: 0 0;
     overflow: hidden;
 }
 :not(.rce-panel-closed) + .vui-icon {
