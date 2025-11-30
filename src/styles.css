@@ -1,0 +1,6 @@
+#rce-word-count-inner {
+    height: 100%;
+}
+.rce-panel-closed + #rce-word-count-inner {
+    height: 0;
+}
