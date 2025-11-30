@@ -1,3 +1,9 @@
+/* TODO:
+    1: Write a debouncer for the text analyzer to reduce load on keyup
+    2: Write a keyup listener to run the counter after debounce
+    3: Figure out how to render the CSS
+*/
+
 /**
  * Extracts text from an HTML element and returns the top 10 most frequent words
  * with their occurrence counts.
@@ -35,8 +41,14 @@ export const getTopTenWordsWithCounts = () => {
     return result.slice(0, 10);
 }
 
-// --- THE NEW RENDERING FUNCTION ---
-function renderWordFrequencyChart(data, targetElement) {
+export function renderWordFrequencyChart() {
+    const wrapper = document.getElementById('rce-most-used-words');
+    if (!wrapper) return;
+    wrapper.innerText = 'Rendering chart...';
+    console.log('[Reedsy Editor Customizations] renderWordFrequencyChart() fired.');
+    /*
+    const data = getTopTenWordsWithCounts(sourceEl);
+
     if (!targetElement) return;
     targetElement.innerHTML = '';
     targetElement.classList.add('frequency-chart-container');
@@ -63,19 +75,5 @@ function renderWordFrequencyChart(data, targetElement) {
         `;
         targetElement.insertAdjacentHTML('beforeend', rowHTML);
     });
+    */
 }
-
-
-// --- WIRING IT TOGETHER ---
-document.getElementById('analyze-btn').addEventListener('click', () => {
-    // 1. Get source element
-    const sourceEl = document.getElementById('source-text');
-    // 2. Get target container for chart
-    const chartContainer = document.getElementById('chart-output');
-    
-    // 3. Get the data
-    const data = getTopTenWordsWithCounts(sourceEl);
-    
-    // 4. Render the chart
-    renderWordFrequencyChart(data, chartContainer);
-});

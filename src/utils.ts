@@ -1,5 +1,6 @@
 import { initThemeButton, enforceThemePreference } from './themeToggle';
 import { removeUpsellPanels } from './removeUpsellPanels';
+import { renderWordFrequencyChart } from './frequentWords';
 
 let initReloads = 0;
 
@@ -7,7 +8,7 @@ let initReloads = 0;
  * Returns a function that, as long as it continues to be invoked, will not
  * be triggered. The function will be called after it stops being called for
  * N milliseconds.
- * * @param {Function} func - The function to run
+ * @param {Function} func - The function to run
  * @param {number} delay - The delay in milliseconds
  */
 export function debounce<T extends any[]>(func: (...args: T) => void, delay: number | undefined) {
@@ -74,6 +75,15 @@ export function initEditorCustomizations() {
         // Start observing the <html> element
         observer.observe(document.documentElement, { attributes: true });
 
+        // Create the debounced version of the handler (5000ms = 5 seconds)
+        const handleKeyUp = debounce(() => {
+            renderWordFrequencyChart();
+        }, 5000);
+
+        // Attach it to the event
+        chapterEditor.addEventListener('keyup', handleKeyUp);
+
+        enforceThemePreference();
         initThemeButton();
         removeUpsellPanels();
     }
