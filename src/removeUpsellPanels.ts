@@ -1,5 +1,3 @@
-export let statPanelsToRemove: NodeListOf<Element> | undefined;
-
 let removeUpsellReloads = 0;
 
 /**
